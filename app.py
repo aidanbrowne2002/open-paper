@@ -10,8 +10,8 @@ def hello_world():  # put application's code here
 
 @app.route('/api/')
 def hello():
-    return jsonify({"bitmap": "0X00,0X00,0X00,0X00,0X00,0X00,0X00,0X00,0X00,0X00,0X00,0X00,0X00,0X00,0X00,0X00",
-                    "paper": "0X00,0X00,0X00,0X00,0X00,0X00,0X00,0X00,0X00,0X00,0X00,0X00,0X00,0X00,0X00,0X00"})
+    return jsonify({'bitmap': '0X00,0X00,0X00,0X00,0X00,0X00,0X00,0X00,0X00,0X00,0X00,0X00,0X00,0X00,0X00,0X00',
+                    'paper': '0X00,0X00,0X00,0X00,0X00,0X00,0X00,0X00,0X00,0X00,0X00,0X00,0X00,0X00,0X00,0X00'})
 
 if __name__ == '__main__':
     app.run()
