@@ -9,9 +9,8 @@ def image_to_binary_bitmap(image):
     pixels = list(image.getdata())
     binary_values = ['1' if pixel < 128 else '0' for pixel in pixels]
     binary_string = ''.join(binary_values)
-    grouped_binary = [binary_string[i:i+8] for i in range(0, len(binary_string), 8)]
-    reversed_bytes = [group[::-1] for group in grouped_binary[::-1]]
-    hex_values = [f'0X{int(group, 2):02X}' for group in reversed_bytes]
+    grouped_binary = [binary_string[i:i+width] for i in range(0, len(binary_string), width)]
+    hex_values = [f'0X{int(group[::-1], 2):02X}' for group in grouped_binary[::-1]]
     hex_bitmap = ','.join(hex_val for hex_val in hex_values)
     return hex_bitmap
 
