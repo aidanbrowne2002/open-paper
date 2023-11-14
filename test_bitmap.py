@@ -20,7 +20,6 @@ def generate_checkerboard(width, height):
 
 
 def display_bitmap(bitmap):
-    print(bitmap)
     return bitmap
 
 
