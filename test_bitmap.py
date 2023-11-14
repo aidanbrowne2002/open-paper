@@ -8,7 +8,7 @@ def create_blank_image(width, height):
 
 
 def image_to_binary_bitmap(image, width, height):
-    width, height = image.size
+    #width, height = image.size
     pixels = list(image.getdata())
 
     binary_values = ['1' if pixel < 128 else '0' for pixel in pixels]
