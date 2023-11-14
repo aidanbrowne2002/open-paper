@@ -65,10 +65,10 @@ def createImage(temp, desc):
     i = create_blank_image(width, height)
 
     Im = ImageDraw.Draw(i)
-    mf = ImageFont.truetype('fonts/BlockStockRegular-A71p.ttf', 10)
+    mf = ImageFont.truetype('fonts/BlockStockRegular-A71p.ttf', 16)
     Im.text((5, 5), f"Place: London", 0, font=mf)  # Use 0 for monochrome (black) color
-    Im.text((5, 50), f"Temperature: {temp} C", 0, font=mf)  # Use 0 for monochrome (black) color
-    Im.text((5, 100), f"Weather: {desc}", 0, font=mf)  # Use 0 for monochrome (black) color
+    Im.text((5, 40), f"Temperature: {temp} C", 0, font=mf)  # Use 0 for monochrome (black) color
+    Im.text((5, 80), f"Weather: {desc}", 0, font=mf)  # Use 0 for monochrome (black) color
     i.show()
     hex_bitmap = ', '.join(image_to_binary_bitmap(i)) + ','
     for i in range(0, len(hex_bitmap), 96):
