@@ -8,21 +8,15 @@ def generate_checkerboard(width, height):
                 row.append("0XFF")
             else:
                 row.append("0X00")
-        bitmap.append(','.join(row) + ',')
+        bitmap.append(''.join(row))
 
     return bitmap
 
 
 def print_bitmap(bitmap):
-    for row in bitmap:
-        print(row)
+    print('\n'.join(bitmap))
 
 
-width = 250
-height = 122
-
-bitmap = generate_checkerboard(width, height)
-print_bitmap(bitmap)
 def createImage():
     width = 250
     height = 122
