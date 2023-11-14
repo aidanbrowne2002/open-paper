@@ -38,7 +38,7 @@ def image_to_binary_bitmap(image):
         trans_data.append([])
     for i in range(1, 129):
         for j in range(1, 251):
-            trans_data[j].append(pixels[(i * j)-1])
+            trans_data[j-1].append(pixels[(i * j)-1])
     #print(trans_data)
 
     for i in range(0, len(pixels), 122):
@@ -66,4 +66,4 @@ def createImage():
         chunk = hex_bitmap[i:i + 96]
         print(chunk)
     return hex_bitmap
-
+createImage()
