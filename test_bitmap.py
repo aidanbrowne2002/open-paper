@@ -13,9 +13,9 @@ def image_to_binary_bitmap(image):
     binary_string = ''.join(binary_values)
 
     # Group the binary string into rows of 8 pixels
-    grouped_binary = [binary_string[i:i + width] for i in range(0, len(binary_string), width)]
+    grouped_binary = [binary_string[i:i + 8] for i in range(0, len(binary_string), 8)]
 
-    # Ensure each row is represented by 16 bytes, adding 8 zeros between rows
+    # Ensure each row is represented by 16 bytes
     grouped_binary = [row + '00000000' for row in grouped_binary]
 
     # Convert each row to hex
@@ -29,8 +29,8 @@ def createImage():
     i = create_blank_image(width, height)
 
     Im = ImageDraw.Draw(i)
-    mf = ImageFont.truetype('/home/aidanbrowne2002/open-paper/fonts/BlockStockRegular-A71p.ttf', 25)
-    Im.text((15, 15), "L", 0, font=mf)  # Use 0 for monochrome (black) color
+    mf = ImageFont.truetype('/home/aidanbrowne2002/open-paper/fonts/ShortBaby-Mg2w.ttf', 25)
+    Im.text((15, 15), "", 0, font=mf)  # Use 0 for monochrome (black) color
 
     hex_bitmap = image_to_binary_bitmap(i)
     print(hex_bitmap)
