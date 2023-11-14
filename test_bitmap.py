@@ -2,26 +2,17 @@ from PIL import Image
 from PIL import ImageDraw
 from PIL import ImageFont
 
-
 def create_blank_image(width, height):
     return Image.new("L", (width, height), "white")  # "L" mode for monochrome images
 
-
 def image_to_binary_bitmap(image):
-    width, height = image.size
     pixels = list(image.getdata())
-
     binary_values = ['1' if pixel < 128 else '0' for pixel in pixels]
     binary_string = ''.join(binary_values)
-
-    grouped_binary = [binary_string[i:i + width] for i in range(0, len(binary_string), width)]
-    grouped_binary.reverse()
-
-    hex_values = [f'0X{int(group[::-1], 2):02X}' for group in grouped_binary]
-
+    grouped_binary = [binary_string[i:i+8] for i in range(0, len(binary_string), 8)]
+    hex_values = [f'0X{int(group, 2):02X}' for group in grouped_binary]
     hex_bitmap = ','.join(hex_val for hex_val in hex_values)
     return hex_bitmap
-
 
 def createImage():
     width, height = 122, 250
