@@ -22,12 +22,25 @@ def create_blank_image(width, height):
 def image_to_binary_bitmap(image):
     width, height = image.size
     pixels = list(image.getdata())
+    print (len(pixels))
+
+
+
 
     for i in range(len(pixels)):
         if pixels[i] > 128:
             pixels[i] = 0
         else:
             pixels[i] = 1
+
+    trans_data = []
+    for i in range(0, 250):
+        trans_data.append([])
+    for i in range(0, 128):
+        for j in range(0, 250):
+            trans_data[j].append(pixels[i * j])
+    #print(trans_data)
+
     for i in range(0, len(pixels), 122):
         chunk = pixels[i:i + 122]
         #print(chunk)
@@ -41,17 +54,16 @@ def image_to_binary_bitmap(image):
 
 
 def createImage():
-    width, height = 128, 250
+    width, height = 250, 128
     i = create_blank_image(width, height)
 
     Im = ImageDraw.Draw(i)
     mf = ImageFont.truetype('fonts/BlockStockRegular-A71p.ttf', 16)
-    Im.text((5, 0), "Lovely", 0, font=mf, angle=180)  # Use 0 for monochrome (black) color
+    Im.text((5, 0), "Lovely", 0, font=mf)  # Use 0 for monochrome (black) color
 
     hex_bitmap = ', '.join(image_to_binary_bitmap(i)) + ','
     for i in range(0, len(hex_bitmap), 96):
         chunk = hex_bitmap[i:i + 96]
         print(chunk)
     return hex_bitmap
-
 
