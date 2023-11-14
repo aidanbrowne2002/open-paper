@@ -103,4 +103,3 @@ else:
     print('Error fetching weather data')
 
 
-createImage((temp-273.15), desc)
