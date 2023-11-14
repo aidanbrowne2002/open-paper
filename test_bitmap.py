@@ -18,8 +18,6 @@ def generate_checkerboard(width, height):
     return bitmap
 
 def display_bitmap(bitmap):
-    for row in bitmap:
-        print(row)
     return bitmap
 
 # Generate and display the checkerboard bitmap for a 250x122 display
