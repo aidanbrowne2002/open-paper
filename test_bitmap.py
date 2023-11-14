@@ -20,7 +20,7 @@ def createImage():
 
     Im = ImageDraw.Draw(i)
     mf = ImageFont.truetype('/home/aidanbrowne2002/open-paper/fonts/ShortBaby-Mg2w.ttf', 25)
-    Im.text((15, 15), "I", 0, font=mf)  # Use 0 for monochrome (black) color
+    Im.text((15, 15), "0", 0, font=mf)  # Use 0 for monochrome (black) color
 
     hex_bitmap = image_to_binary_bitmap(i)
     print(hex_bitmap)
