@@ -66,7 +66,7 @@ def createImage(temp, desc):
 
     Im = ImageDraw.Draw(i)
     mf = ImageFont.truetype('fonts/SwanseaBold-D0ox.ttf', 16)
-    Im.text((5, 5), f"Place: London", 0, font=mf)  # Use 0 for monochrome (black) color
+    Im.text((5, 8), f"Place: London", 0, font=mf)  # Use 0 for monochrome (black) color
     Im.text((5, 40), f"Temperature: {temp} C", 0, font=mf)  # Use 0 for monochrome (black) color
     Im.text((5, 80), f"Weather: {desc}", 0, font=mf)  # Use 0 for monochrome (black) color
     i.show()
