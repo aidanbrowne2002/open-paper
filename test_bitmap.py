@@ -15,8 +15,9 @@ def image_to_binary_bitmap(image):
     binary_string = ''.join(binary_values)
 
     grouped_binary = [binary_string[i:i + width] for i in range(0, len(binary_string), width)]
+    grouped_binary.reverse()
 
-    hex_values = [f'0X{int(group[::-1], 2):02X}' for group in grouped_binary[::-1]]
+    hex_values = [f'0X{int(group[::-1], 2):02X}' for group in grouped_binary]
 
     hex_bitmap = ','.join(hex_val for hex_val in hex_values)
     return hex_bitmap
