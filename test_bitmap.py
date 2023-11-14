@@ -60,17 +60,47 @@ def image_to_binary_bitmap(image):
     return hexarray
 
 
-def createImage():
+def createImage(temp, desc):
     width, height = 250, 128
     i = create_blank_image(width, height)
 
     Im = ImageDraw.Draw(i)
-    mf = ImageFont.truetype('fonts/BlockStockRegular-A71p.ttf', 16)
-    Im.text((5, 5), "Lovely", 0, font=mf)  # Use 0 for monochrome (black) color
+    mf = ImageFont.truetype('fonts/BlockStockRegular-A71p.ttf', 10)
+    Im.text((5, 5), f"Place: London", 0, font=mf)  # Use 0 for monochrome (black) color
+    Im.text((50, 5), f"Temperature: {temp} C", 0, font=mf)  # Use 0 for monochrome (black) color
+    Im.text((100, 5), f"Weather: {desc}", 0, font=mf)  # Use 0 for monochrome (black) color
     i.show()
     hex_bitmap = ', '.join(image_to_binary_bitmap(i)) + ','
     for i in range(0, len(hex_bitmap), 96):
         chunk = hex_bitmap[i:i + 96]
         #print(chunk)
     return hex_bitmap
-createImage()
+
+import requests
+import logging
+
+logging.basicConfig(format='%(levelname)s - %(asctime)s - %(message)s (line: %(lineno)d) [%(filename)s]',
+    datefmt='%d/%m/%Y %I:%M:%S' ,filename='logs.log', encoding='utf-8', level=logging.DEBUG)
+
+
+api_key = '78f2e9d22945768088e9d0da792f8d68'
+
+city = 'London'
+
+url = f'http://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_key}'
+
+response = requests.get(url)
+
+if response.status_code == 200:
+    logging.info(f'Weather data fetched successfully for {city}')
+    data = response.json()
+    temp = data['main']['temp']
+    desc = data['weather'][0]['description']
+    print(f'Temperature: {temp - 273.15} C')
+    print(f'Description: {desc}')
+else:
+    logging.error(f'Error fetching weather data for {city}')
+    print('Error fetching weather data')
+
+
+createImage((temp-273.15), desc)
