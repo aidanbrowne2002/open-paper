@@ -12,10 +12,10 @@ def image_to_binary_bitmap(image):
     binary_values = ['1' if pixel < 128 else '0' for pixel in pixels]
     binary_string = ''.join(binary_values)
 
-    # Group the binary string into rows of 8 pixels, adding 8 zeros between rows
-    grouped_binary = [binary_string[i:i + 8] + '00000000' for i in range(0, len(binary_string), 8)]
+    # Group the binary string into rows of 8 pixels
+    grouped_binary = [binary_string[i:i + width] for i in range(0, len(binary_string), width)]
 
-    # Ensure each row is represented by 16 bytes
+    # Ensure each row is represented by 16 bytes, adding 8 zeros between rows
     grouped_binary = [row + '00000000' for row in grouped_binary]
 
     # Convert each row to hex
