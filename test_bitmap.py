@@ -71,6 +71,6 @@ def createImage():
     hex_bitmap = ', '.join(image_to_binary_bitmap(i)) + ','
     for i in range(0, len(hex_bitmap), 96):
         chunk = hex_bitmap[i:i + 96]
-        print(chunk)
+        #print(chunk)
     return hex_bitmap
 createImage()
