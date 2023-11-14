@@ -26,7 +26,7 @@ def createImage():
     i = create_blank_image(width, height)
 
     Im = ImageDraw.Draw(i)
-    mf = ImageFont.truetype('/home/aidanbrowne2002/open-paper/fonts/ShortBaby-Mg2w.ttf', 25)
+    mf = ImageFont.truetype('/home/aidanbrowne2002/open-paper/fonts/BlockStockRegular-A71p.ttf', 25)
     Im.text((15, 15), "L", 0, font=mf)  # Use 0 for monochrome (black) color
 
     hex_bitmap = image_to_binary_bitmap(i)
