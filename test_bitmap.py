@@ -34,14 +34,14 @@ def image_to_binary_bitmap(image):
         else:
             pixels[i] = 1
 
-    '''pixels_array = np.array(pixels).reshape(128, 250)
+    pixels_array = np.array(pixels).reshape(128, 250)
 
     # Step 2: Transpose the array (250x128)
     transposed_array = pixels_array.T
 
     # Step 3: Flatten the transposed array
     flattened_array = transposed_array.flatten()
-    pixels = flattened_array'''
+    pixels = flattened_array
 
     for i in range(0, len(pixels), 122):
         chunk = pixels[i:i + 122]
