@@ -31,10 +31,10 @@ def createImage():
     width, height = 122, 250
     i = create_blank_image(width, height)
 
-    Im = ImageDraw.Draw(i, width, height)
+    Im = ImageDraw.Draw(i)
     mf = ImageFont.truetype('/home/aidanbrowne2002/open-paper/fonts/ShortBaby-Mg2w.ttf', 25)
     Im.text((15, 15), "0", 0, font=mf)  # Use 0 for monochrome (black) color
 
-    hex_bitmap = image_to_binary_bitmap(i)
+    hex_bitmap = image_to_binary_bitmap(i, width, height)
     print(hex_bitmap)
     return hex_bitmap
