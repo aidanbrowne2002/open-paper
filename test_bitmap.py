@@ -66,7 +66,7 @@ def createImage():
 
     Im = ImageDraw.Draw(i)
     mf = ImageFont.truetype('fonts/BlockStockRegular-A71p.ttf', 16)
-    Im.text((5, 0), "Lovely", 0, font=mf)  # Use 0 for monochrome (black) color
+    Im.text((5, 5), "Lovely", 0, font=mf)  # Use 0 for monochrome (black) color
     i.show()
     hex_bitmap = ', '.join(image_to_binary_bitmap(i)) + ','
     for i in range(0, len(hex_bitmap), 96):
