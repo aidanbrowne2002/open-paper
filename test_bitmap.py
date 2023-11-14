@@ -1,37 +1,32 @@
-from PIL import Image
-from PIL import ImageDraw
-from PIL import ImageFont
+def generate_checkerboard(width, height):
+    bitmap = []
 
-def create_blank_image(width, height):
-    return Image.new("L", (width, height), "white")  # "L" mode for monochrome images
+    for y in range(height):
+        row = []
+        for x in range(width):
+            if (x // 8) % 2 == (y // 8) % 2:
+                row.append("0XFF")
+            else:
+                row.append("0X00")
+        bitmap.append(','.join(row) + ',')
 
-def image_to_binary_bitmap(image):
-    width, height = image.size
-    pixels = list(image.getdata())
+    return bitmap
 
-    binary_values = ['1' if pixel < 128 else '0' for pixel in pixels]
-    binary_string = ''.join(binary_values)
 
-    # Group the binary string into rows of 8 pixels
-    grouped_binary = [binary_string[i:i + 8] for i in range(0, len(binary_string), 8)]
+def print_bitmap(bitmap):
+    for row in bitmap:
+        print(row)
 
-    # Ensure each row is represented by 16 bytes
-    grouped_binary = [row + '00000000' for row in grouped_binary]
 
-    # Convert each row to hex
-    hex_values = [f'0X{int(group[::-1], 2):02X}' for group in grouped_binary[::-1]]
+width = 250
+height = 122
 
-    hex_bitmap = ','.join(hex_val for hex_val in hex_values)
-    return hex_bitmap
-
+bitmap = generate_checkerboard(width, height)
+print_bitmap(bitmap)
 def createImage():
-    width, height = 122, 250
-    i = create_blank_image(width, height)
+    width = 250
+    height = 122
 
-    Im = ImageDraw.Draw(i)
-    mf = ImageFont.truetype('/home/aidanbrowne2002/open-paper/fonts/BlockStockRegular-A71p.ttf', 25)
-    Im.text((15, 15), "L", 0, font=mf)  # Use 0 for monochrome (black) color
-
-    hex_bitmap = image_to_binary_bitmap(i)
-    print(hex_bitmap)
-    return hex_bitmap
+    bitmap = generate_checkerboard(width, height)
+    print_bitmap(bitmap)
+    return bitmap
