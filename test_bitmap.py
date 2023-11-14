@@ -39,8 +39,13 @@ def image_to_binary_bitmap(image):
     # Step 2: Transpose the array (250x128)
     transposed_array = pixels_array.T
 
-    # Step 3: Flatten the transposed array
-    flattened_array = transposed_array.flatten()
+    # Step 3: Flip the transposed array horizontally
+    flipped_array = np.flip(transposed_array, axis=1)
+
+    # Step 4: Flatten the flipped array
+    flattened_array = flipped_array.flatten()
+
+    # Now, flattened_array contains your desired result with a horizontal flip
     pixels = flattened_array
 
     for i in range(0, len(pixels), 122):
@@ -62,10 +67,10 @@ def createImage():
     Im = ImageDraw.Draw(i)
     mf = ImageFont.truetype('fonts/BlockStockRegular-A71p.ttf', 16)
     Im.text((5, 0), "Lovely", 0, font=mf)  # Use 0 for monochrome (black) color
-
+    i.show()
     hex_bitmap = ', '.join(image_to_binary_bitmap(i)) + ','
     for i in range(0, len(hex_bitmap), 96):
         chunk = hex_bitmap[i:i + 96]
         print(chunk)
     return hex_bitmap
-#createImage()
+createImage()
