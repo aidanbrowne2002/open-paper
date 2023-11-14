@@ -36,9 +36,9 @@ def image_to_binary_bitmap(image):
     trans_data = []
     for i in range(0, 250):
         trans_data.append([])
-    for i in range(0, 128):
-        for j in range(0, 250):
-            trans_data[j].append(pixels[i * j])
+    for i in range(1, 129):
+        for j in range(1, 251):
+            trans_data[j].append(pixels[(i * j)-1])
     #print(trans_data)
 
     for i in range(0, len(pixels), 122):
