@@ -45,7 +45,7 @@ def createImage():
     i = create_blank_image(width, height)
 
     Im = ImageDraw.Draw(i)
-    mf = ImageFont.truetype('fonts/BlockStockRegular-A71p.ttf', 25)
+    mf = ImageFont.truetype('fonts/BlockStockRegular-A71p.ttf', 16)
     Im.text((0, 0), "Lovely", 0, font=mf, angle=180)  # Use 0 for monochrome (black) color
 
     hex_bitmap = ', '.join(image_to_binary_bitmap(i)) + ','
