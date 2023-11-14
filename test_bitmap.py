@@ -7,7 +7,7 @@ def create_blank_image(width, height):
     return Image.new("L", (width, height), "white")  # "L" mode for monochrome images
 
 
-def image_to_binary_bitmap(image):
+def image_to_binary_bitmap(image, width, height):
     pixels = list(image.getdata())
     binary_values = ['1' if pixel < 128 else '0' for pixel in pixels]
 
@@ -30,6 +30,6 @@ def createImage():
     mf = ImageFont.truetype('/home/aidanbrowne2002/open-paper/fonts/ShortBaby-Mg2w.ttf', 25)
     Im.text((15, 15), "I", 0, font=mf)  # Use 0 for monochrome (black) color
 
-    hex_bitmap = image_to_binary_bitmap(i)
+    hex_bitmap = image_to_binary_bitmap(i, width, height)
     print(hex_bitmap)
     return hex_bitmap
