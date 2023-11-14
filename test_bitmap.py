@@ -20,7 +20,7 @@ def image_to_binary_bitmap(image):
     width, height = image.size
     pixels = list(image.getdata())
     for i in range(len(pixels)):
-        if pixels[i] < 128:
+        if pixels[i] > 128:
             pixels[i] = 0
         else:
             pixels[i] = 1
