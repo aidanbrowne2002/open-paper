@@ -1,6 +1,7 @@
 from PIL import Image
 from PIL import ImageDraw
 from PIL import ImageFont
+import numpy as np
 
 
 def binary_to_hex(arr):
@@ -22,7 +23,7 @@ def create_blank_image(width, height):
 def image_to_binary_bitmap(image):
     width, height = image.size
     pixels = list(image.getdata())
-    print (len(pixels))
+    #print (len(pixels))
 
 
 
@@ -33,13 +34,14 @@ def image_to_binary_bitmap(image):
         else:
             pixels[i] = 1
 
-    trans_data = []
-    for i in range(0, 250):
-        trans_data.append([])
-    for i in range(1, 129):
-        for j in range(1, 251):
-            trans_data[j-1].append(pixels[(i * j)-1])
-    #print(trans_data)
+    '''pixels_array = np.array(pixels).reshape(128, 250)
+
+    # Step 2: Transpose the array (250x128)
+    transposed_array = pixels_array.T
+
+    # Step 3: Flatten the transposed array
+    flattened_array = transposed_array.flatten()
+    pixels = flattened_array'''
 
     for i in range(0, len(pixels), 122):
         chunk = pixels[i:i + 122]
@@ -64,6 +66,6 @@ def createImage():
     hex_bitmap = ', '.join(image_to_binary_bitmap(i)) + ','
     for i in range(0, len(hex_bitmap), 96):
         chunk = hex_bitmap[i:i + 96]
-        #print(chunk)
+        print(chunk)
     return hex_bitmap
-createImage()
+#createImage()
