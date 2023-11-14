@@ -15,7 +15,7 @@ def image_to_binary_bitmap(image):
     return hex_bitmap
 
 def createImage():
-    width, height = 250, 122
+    width, height = 122, 250
     i = create_blank_image(width, height)
 
     Im = ImageDraw.Draw(i)
