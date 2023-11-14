@@ -25,8 +25,8 @@ def image_to_binary_bitmap(image):
         else:
             pixels[i] = 1
 
-    for i in range(0, len(pixels), 250):
-        chunk = pixels[i:i + 250]
+    for i in range(0, len(pixels), 128):
+        chunk = pixels[i:i + 128]
         #print(chunk)
 
     pixelarray = []
