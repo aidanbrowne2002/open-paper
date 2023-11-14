@@ -15,10 +15,10 @@ def image_to_binary_bitmap(image):
     binary_string = ''.join(binary_values)
 
     # Group the binary string into columns of bytes
-    grouped_binary = [binary_string[i:i + height] for i in range(0, len(binary_string), height)]
+    grouped_binary = [binary_string[i:i + 8] for i in range(0, len(binary_string), 8)]
 
     # Convert each column to hex
-    hex_values = [f'0X{int(group[::-1], 2):02X}' for group in grouped_binary[::-1]]
+    hex_values = [f'0X{int(group[::-1], 2):02X}' for group in grouped_binary]
 
     hex_bitmap = ','.join(hex_val for hex_val in hex_values)
     return hex_bitmap
