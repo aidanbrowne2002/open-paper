@@ -44,5 +44,5 @@ def createImage():
     mf = ImageFont.truetype('fonts/BlockStockRegular-A71p.ttf', 25)
     Im.text((15, 15), "Lov", 0, font=mf)  # Use 0 for monochrome (black) color
 
-    hex_bitmap = image_to_binary_bitmap(i)
+    hex_bitmap = str(image_to_binary_bitmap(i))
     return hex_bitmap
