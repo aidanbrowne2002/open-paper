@@ -7,7 +7,7 @@ def create_blank_image(width, height):
 
 def image_to_hex_bitmap(image):
     pixels = list(image.getdata())
-    hex_bitmap = ', '.join(['0X{:02X}'.format(pixel) for pixel in pixels])
+    hex_bitmap = ','.join(['0X{:02X}'.format(pixel) for pixel in pixels])
     return hex_bitmap
 
 def createImage():
