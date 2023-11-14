@@ -11,7 +11,8 @@ def hello_world():  # put application's code here
 
 @app.route('/api/')
 def hello():
-    return jsonify({'bitmap': test_bitmap.createImage()})
+    bitmapimg = test_bitmap.createImage()
+    return jsonify({'bitmap':bitmapimg})
 
 if __name__ == '__main__':
     app.run()
