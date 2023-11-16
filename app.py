@@ -40,5 +40,9 @@ def hello():
     bitmapimgtext = str(bitmapimg)
     return jsonify({'bitmap': bitmapimgtext})
 
+@app.route("/get_my_ip", methods=["GET"])
+def get_my_ip():
+    return jsonify({'ip': request.remote_addr}), 200
+
 if __name__ == '__main__':
     app.run()
