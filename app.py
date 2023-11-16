@@ -42,7 +42,7 @@ def hello():
 
 @app.route("/get_my_ip", methods=["GET"])
 def get_my_ip():
-    return jsonify({'ip': request.META.get('HTTP_X_REAL_IP')}), 200
+    return jsonify({'ip': request.headers['X-Real-IP']}), 200
 
 if __name__ == '__main__':
     app.run()
