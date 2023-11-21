@@ -11,7 +11,14 @@ app = Flask(__name__)
 def hello_world():  # put application's code here
     return 'Hello World! Open-paper'
 
-@app.route('/api/')
+
+@app.route('/api/initial/')
+def initalAPI():
+    device = request.args.get('device')
+    return jsonify({'api': 'aidanbrowne2002.eu.pythonanywhere.com/api/weather/','check-in': '10'}), 200
+
+
+@app.route('/api/weather/')
 def hello():
 
 
