@@ -35,9 +35,7 @@ def hello():
                         datefmt='%d/%m/%Y %I:%M:%S', filename='logs.log', encoding='utf-8', level=logging.DEBUG)
 
     ip = request.headers['X-Real-IP']
-    location_responce = requests.get(f"https://geolocation-db.com/jsonp/{ip}")
-    if response.status_code == 200:
-        city = location_responce.json()['city']
+    city = location.getcity(ip)
 
     api_key = '78f2e9d22945768088e9d0da792f8d68'
 
