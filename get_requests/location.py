@@ -1,4 +1,4 @@
-from flask import request
+import requests
 import json
 
 def getcity(ip):
