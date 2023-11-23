@@ -43,7 +43,7 @@ def hello():
     else:
         logging.error(f'Error fetching weather data for {city}')
         print('Error fetching weather data')
-    bitmapimg = test_bitmap.createImage(round((temp- 273.15),1), desc)
+    bitmapimg = test_bitmap.createImage(city,round((temp- 273.15),1), desc)
     bitmapimgtext = str(bitmapimg)
     return jsonify({'bitmap': bitmapimgtext})
 
