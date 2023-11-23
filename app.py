@@ -16,6 +16,8 @@ def hello_world():  # put application's code here
 def initalAPI():
     ip = request.headers['X-Real-IP']
     location_responce = requests.get(f"https://geolocation-db.com/jsonp/{ip}")
+    location_responce = location_responce.replace('callback(', '').replace(')', '')
+    location_responce = json.loads(location_responce)
     if location_responce.status_code == 200:
         city = location_responce.json()['city']
     device = request.args.get('device')
