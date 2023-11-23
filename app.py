@@ -12,10 +12,14 @@ def hello_world():  # put application's code here
     return 'Hello World! Open-paper'
 
 
-@app.route('/api/initial/')
+@app.route('/api/initial/', methods=['GET'])
 def initalAPI():
+    ip = request.headers['X-Real-IP']
+    location_responce = requests.get(f"https://geolocation-db.com/jsonp/{ip}")
+    if response.status_code == 200:
+        location_responce.json()['city']
     device = request.args.get('device')
-    return jsonify({'api': 'http://aidanbrowne2002.eu.pythonanywhere.com/api/weather/','check-in': '60', 'update': '0'}), 200
+    return jsonify({'api': 'http://aidanbrowne2002.eu.pythonanywhere.com/api/weather/','check-in': '60', 'update': '1', 'city': city}), 200
 
 
 @app.route('/api/weather/')
@@ -25,9 +29,13 @@ def hello():
     logging.basicConfig(format='%(levelname)s - %(asctime)s - %(message)s (line: %(lineno)d) [%(filename)s]',
                         datefmt='%d/%m/%Y %I:%M:%S', filename='logs.log', encoding='utf-8', level=logging.DEBUG)
 
+    ip = request.headers['X-Real-IP']
+    location_responce = requests.get(f"https://geolocation-db.com/jsonp/{ip}")
+    if response.status_code == 200:
+        city = location_responce.json()['city']
+
     api_key = '78f2e9d22945768088e9d0da792f8d68'
 
-    city = 'Tokyo'
 
     url = f'http://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_key}'
 
