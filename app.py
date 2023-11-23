@@ -2,6 +2,7 @@ from flask import Flask, jsonify, request
 import test_bitmap
 import requests
 import logging
+import json
 
 
 app = Flask(__name__)
