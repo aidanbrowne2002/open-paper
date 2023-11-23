@@ -3,7 +3,8 @@ import test_bitmap
 import requests
 import logging
 import json
-import get_requests
+from get_requests import city
+
 
 
 
