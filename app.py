@@ -17,7 +17,7 @@ def initalAPI():
     ip = request.headers['X-Real-IP']
     location_responce = requests.get(f"https://geolocation-db.com/jsonp/{ip}")
     if location_responce.status_code == 200:
-        location_responce.json()['city']
+        city = location_responce.json()['city']
     device = request.args.get('device')
     return jsonify({'api': 'http://aidanbrowne2002.eu.pythonanywhere.com/api/weather/','check-in': '60', 'update': '1', 'city': city}), 200
 
