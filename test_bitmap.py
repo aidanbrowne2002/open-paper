@@ -30,9 +30,9 @@ def image_to_binary_bitmap(image):
 
     for i in range(len(pixels)):
         if pixels[i] > 128:
-            pixels[i] = 0
-        else:
             pixels[i] = 1
+        else:
+            pixels[i] = 0
 
     pixels_array = np.array(pixels).reshape(128, 250)
 
