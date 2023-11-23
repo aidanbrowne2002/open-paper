@@ -16,7 +16,7 @@ def hello_world():  # put application's code here
 def initalAPI():
     ip = request.headers['X-Real-IP']
     response = requests.get(f"https://geolocation-db.com/jsonp/{ip}")
-    response = requests.get(url)
+    #response = requests.get(url)
     data = response.text
 
     # Extracting the JSON data from the callback function
