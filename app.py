@@ -15,7 +15,7 @@ def hello_world():  # put application's code here
 @app.route('/api/initial/')
 def initalAPI():
     device = request.args.get('device')
-    return jsonify({'api': 'aidanbrowne2002.eu.pythonanywhere.com/api/weather/','check-in': '10'}), 200
+    return jsonify({'api': 'http://aidanbrowne2002.eu.pythonanywhere.com/api/weather/','check-in': '10'}), 200
 
 
 @app.route('/api/weather/')
