@@ -1,3 +1,6 @@
+from flask import request
+import json
+
 def getcity(ip):
     response = requests.get(f"https://geolocation-db.com/jsonp/{ip}")
     #response = requests.get(url)
