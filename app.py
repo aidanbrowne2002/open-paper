@@ -15,11 +15,18 @@ def hello_world():  # put application's code here
 @app.route('/api/initial/', methods=['GET'])
 def initalAPI():
     ip = request.headers['X-Real-IP']
-    location_responce = requests.get(f"https://geolocation-db.com/jsonp/{ip}")
-    location_responce = location_responce.replace('callback(', '').replace(')', '')
-    location_responce = json.loads(location_responce)
-    if location_responce.status_code == 200:
-        city = location_responce.json()['city']
+    response = requests.get(f"https://geolocation-db.com/jsonp/{ip}")
+    response = requests.get(url)
+    data = response.text
+
+    # Extracting the JSON data from the callback function
+    json_data = data.split("callback(")[1].rstrip(")")
+
+    # Now you can parse the JSON data
+    parsed_data = json.loads(json_data)
+
+    # Access the city information
+    city = parsed_data["city"]
     device = request.args.get('device')
     return jsonify({'api': 'http://aidanbrowne2002.eu.pythonanywhere.com/api/weather/','check-in': '60', 'update': '1', 'city': city}), 200
 
