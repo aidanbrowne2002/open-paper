@@ -27,7 +27,7 @@ def hello():
 
     api_key = '78f2e9d22945768088e9d0da792f8d68'
 
-    city = 'London'
+    city = 'Tokyo'
 
     url = f'http://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_key}'
 
