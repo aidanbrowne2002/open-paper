@@ -3,7 +3,7 @@ import test_bitmap
 import requests
 import logging
 import json
-from get_requests import city
+import city
 
 
 
@@ -22,7 +22,7 @@ def hello_world():  # put application's code here
 @app.route('/api/initial/', methods=['GET'])
 def initalAPI():
     ip = request.headers['X-Real-IP']
-    city = get_requests.city.getcity(ip)
+    city = city.getcity(ip)
     device = request.args.get('device')
     return jsonify({'api': 'http://aidanbrowne2002.eu.pythonanywhere.com/api/weather/','check-in': '60', 'update': '1', 'city': city}), 200
 
